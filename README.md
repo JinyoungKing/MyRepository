@@ -3,7 +3,7 @@ MyRepository
 
 > My First Repository
 
-* 나의 작은 연습장
+* 진영킹의 작은 연습장
 
 ## HelloWorld
 ```java
@@ -13,6 +13,7 @@ public class HelloWorld {
 	}
 }
 ```
+개발자라면 누구나 처음에 작성하는 코드
 
 ## File Write Performance
 ```java
@@ -35,6 +36,7 @@ public class FilesTest {
 
 }
 ```
+Java에서 지원하는 파일 쓰기의 성능 테스트 중 Files 라이브러리를 사용한 코드
 
 ## MouseMoveTest
 ```java
@@ -59,3 +61,6 @@ public class MouseMoveTest {
 
 }
 ```
+화면 보호기를 막고자 Robot 라이브러리를 통한 커서를 이동시키는 코드
+이런 것도 된다..!
+
