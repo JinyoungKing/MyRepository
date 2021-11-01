@@ -64,3 +64,24 @@ public class MouseMoveTest {
 화면 보호기를 막고자 Robot 라이브러리를 통한 커서를 이동시키는 코드   
 이런 것도 된다..! ヾ(•ω•`)o
 
+## Max User Processes in Linux
+```
+[kjy@d25ed7467411 ~]$ ulimit -a
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 50169
+max locked memory       (kbytes, -l) 82000
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1048576
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 1024
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+```
+
