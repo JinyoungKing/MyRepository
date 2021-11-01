@@ -1,7 +1,7 @@
-MyRepository
+My First Repository
 ===============
 
-> My First Repository
+> 아쉽게도 진영킹은 기억력은 킹이 아니다. 그래서 기록한다. 끄적끄적 o(*￣▽￣*)ブ
 
 * 진영킹의 작은 연습장
 
