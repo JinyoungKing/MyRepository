@@ -14,6 +14,7 @@ public class HelloWorld {
 }
 ```
 개발자라면 누구나 처음에 작성하는 코드
+- - -
 
 ## File Write Performance
 ```java
@@ -37,6 +38,7 @@ public class FilesTest {
 }
 ```
 Java에서 지원하는 파일 쓰기의 성능 테스트 중 Files 라이브러리를 사용한 코드
+- - -
 
 ## MouseMoveTest
 ```java
@@ -63,6 +65,7 @@ public class MouseMoveTest {
 ```
 화면 보호기를 막고자 Robot 라이브러리를 통한 커서를 이동시키는 코드   
 이런 것도 된다..! ヾ(•ω•`)o
+- - -
 
 ## Max User Processes in Linux
 프로젝트 중 개발서버에서 OutOfMemoryError가 발생하여 정리   
@@ -208,24 +211,6 @@ Count: 3
 Count: 4
 Thread[Test-Thread-2,5,main]
 Thread[Test-Thread-3,5,main]
-Count: 5
-Count: 6
-Thread[Test-Thread-4,5,main]
-Thread[Test-Thread-5,5,main]
-Count: 7
-Thread[Test-Thread-6,5,main]
-Count: 8
-Thread[Test-Thread-7,5,main]
-Count: 9
-Thread[Test-Thread-8,5,main]
-Count: 10
-Thread[Test-Thread-9,5,main]
-Count: 11
-Count: 12
-Thread[Test-Thread-10,5,main]
-Thread[Test-Thread-11,5,main]
-Count: 13
-Thread[Test-Thread-12,5,main]
 ...중략...
 Count: 1000
 Thread[Test-Thread-999,5,main]
@@ -246,8 +231,9 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 기존 쓰레드가 20개 정도 서버에 있었음을 가정하면 테스트는 성공!
 ```
 ```
-^COpenJDK 64-Bit Server VM warning: Exception java.lang.OutOfMemoryError occurred dispatching signal SIGINT to handler- the VM may need to be forcibly terminated
+	^COpenJDK 64-Bit Server VM warning: Exception java.lang.OutOfMemoryError occurred dispatching signal SIGINT to handler- the VM may need to be forcibly terminated
 ```
-> 터미널 인터럽트(Ctrl + C)를 해도 프로세스가 취소되지 않음... 안녕, 컨테이너..
+ㅜ.ㅜ
+> 터미널 인터럽트(Ctrl + C)를 해도 프로세스가 취소되지 않음... 안녕, 컨테이너..ㅠㅠ
 
 
