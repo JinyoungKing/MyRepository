@@ -1,7 +1,7 @@
 package kr.co.direa.kjy.test.thread;
 
 public class ThreadMakerTest {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		int threadCount = 0;
 		while (!Thread.interrupted()) {
 			threadCount++;
@@ -17,6 +17,7 @@ public class ThreadMakerTest {
 					Thread.currentThread().interrupt();
 				}
 			}, "Test-Thread-" +name).start();
+			Thread.sleep(100); // Create thread per 0.1 seconds
 			
 			/* I will use lambda.
 			 * new Thread(new Runnable() {
