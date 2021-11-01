@@ -65,7 +65,7 @@ public class MouseMoveTest {
 이런 것도 된다..! ヾ(•ω•`)o
 
 ## Max User Processes in Linux
-프로젝트 중 개발서버에서 OutOfMemoryError가 발생하여 정리
+프로젝트 중 개발서버에서 OutOfMemoryError가 발생하여 정리   
 테스트는 도커로 CentOS 컨테이너를 생성하여 진행하였고 생성한 명령어는 다음과 같다.
 ```
 PS C:\Users\KJY> docker run -it --rm centos:latest bash
