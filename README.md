@@ -244,13 +244,13 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 > 코드 문제면 코드를 수정하도록... (_ _) 이상!
 
 + 추가
-> 위 테스트에서 사용한 ulimit -u 명령어는 영구적인 설정은 아니다.   
-> 실제로 계정 로그아웃 후 다시 로그인하면 서버의 기본값이 출력되는데 이를 영구적으로 설정하기 위해서 다음과 같이 수행한다.   
+> 위 테스트에서 사용한 ulimit -u 명령어는 __영구적인 설정__ 은 아니다.   
+> 실제로 계정 로그아웃 후 다시 로그인하여 ```ulimit -a```를 치면 서버의 기본값이 출력되는데 이를 영구적으로 설정하기 위해서 다음과 같이 수행한다.   
 > ```
 > 1. vi /etc/security/limits.conf
 > 2. 파일의 하단에 다음 내용을 입력
-> ```*	soft	nproc	1024```
-> > 의미: 모든 계정(*)에 soft 타입으로 max user processes 제한을 1024로 설정한다.
+> *	soft	nproc	1024
+> 의미: 모든 계정(*)에 soft 타입으로 max user processes 제한을 1024로 설정한다.
 > 3. 저장 후 닫기
 > ```
 > 
