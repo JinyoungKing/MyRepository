@@ -125,7 +125,7 @@ max user processes              (-u) unlimited
 virtual memory          (kbytes, -v) unlimited
 file locks                      (-x) unlimited
 ```
-ulimit -a, ulimit -aH 명령어로 max user processes 확인   
+```ulimit -a```, ```ulimit -aH``` 명령어로 max user processes 확인   
 > -a 옵션은 soft 타입의 limit, -aH 옵션은 hard 타입의 limit 출력
 
 ```
@@ -177,7 +177,7 @@ ThreadMakerTest.java
 [kjy@d25ed7467411 ~]$ ls
 ThreadMakerTest.class  ThreadMakerTest.java
 ```
-vi 편집기로 미리 작성한 코드를 복붙하여 java 파일 생성하고 컴파일
+```vi``` 편집기로 미리 작성한 코드를 복붙하여 java 파일 생성하고 컴파일
 
 ```java
 public class ThreadMakerTest {
@@ -228,7 +228,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
         at java.lang.Thread.start(Thread.java:717)
         at ThreadMakerTest.main(ThreadMakerTest.java:17)
 ```
-테스트 시작하고 1004번째 쓰레드 생성에서 OutOfMemoryError 발생   
+테스트 시작하고 1004번째 쓰레드 생성에서 ```java.lang.OutOfMemoryError: unable to create new native thread``` 발생   
 기존 쓰레드가 20개 정도 서버에 있었음을 가정하면 테스트는 성공!
 
 ```
@@ -237,6 +237,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 > 터미널 인터럽트(Ctrl + C)를 해도 프로세스가 취소되지 않음... 안녕, 컨테이너.. （；´д｀）ゞ
 > 다른 터미널로 컨테이너에 접속하여 ```kill -9 PID``` 명령어로 프로세스 종료는 가능
+> PID는 ```ps -ef | grep ThreadMakerTest``` 명령어로 2번째 값으로 검색 가능
 
 + 결론
 > ```ulimit -u``` 값은 사용자 계정에서 실행되는 쓰레드의 최대 갯수이다.   
@@ -245,13 +246,13 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 > 코드 문제면 코드를 수정하도록 한다. (_ _) 이상!
 
 + 추가
-> 위 테스트에서 사용한 ulimit -u 명령어는 __영구적인 설정__은 아니다.   
+> __위 테스트에서 사용한 ```ulimit -u``` 명령어는 영구적인 설정은 아니다.__   
 > 실제로 계정 로그아웃 후 다시 로그인하여 ```ulimit -a```를 치면 서버의 기본값이 출력되는데 이를 영구적으로 설정하기 위해서 다음과 같이 수행한다.   
 > ```
 > 1. vi /etc/security/limits.conf
 > 2. 파일의 하단에 다음 내용을 입력
 > *	soft	nproc	1024
-> 의미: 모든 계정(*)에 soft 타입으로 max user processes 제한을 1024로 설정한다.
+> 의미: 모든 계정( * )에 soft 타입으로 max user processes 제한을 1024로 설정한다.
 > 3. 저장 후 닫기
 > ```
 > 
