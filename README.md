@@ -228,22 +228,22 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
         at java.lang.Thread.start(Thread.java:717)
         at ThreadMakerTest.main(ThreadMakerTest.java:17)
 ```
-테스트 시작하고 1004번째 쓰레드 생성에서 ```java.lang.OutOfMemoryError: unable to create new native thread``` 발생   
+테스트를 시작하고 1004번째 쓰레드 생성에서 ```java.lang.OutOfMemoryError: unable to create new native thread``` 발생   
 기존 쓰레드가 20개 정도 서버에 있었음을 가정하면 테스트는 성공!
 
 ```
 ^COpenJDK 64-Bit Server VM warning: Exception java.lang.OutOfMemoryError occurred dispatching signal SIGINT to handler- the VM may need to be forcibly terminated
 ```
 
-> 터미널 인터럽트(Ctrl + C)를 해도 프로세스가 취소되지 않음... 안녕, 컨테이너.. （；´д｀）ゞ
-> 다른 터미널로 컨테이너에 접속하여 ```kill -9 PID``` 명령어로 프로세스 종료는 가능
-> PID는 ```ps -ef | grep ThreadMakerTest``` 명령어로 2번째 값으로 검색 가능
+> 터미널 인터럽트(Ctrl + C)를 해도 프로세스가 취소되지 않음... 안녕, 컨테이너.. （；´д｀）ゞ   
+> 다른 터미널로 컨테이너에 접속하여 ```kill -9 PID``` 명령어를 사용하면 프로세스 종료는 가능   
+> PID는 ```ps -ef | grep ThreadMakerTest``` 명령어 출력값의 2번째 값으로 검색 가능   
 
 + 결론
 > ```ulimit -u``` 값은 사용자 계정에서 실행되는 쓰레드의 최대 갯수이다.   
 > ```Exception in thread "main" java.lang.OutOfMemoryError: unable to create new native thread```가 발생했다면 ulimit -u 값을 확인   
 > ```ulimit -u 설정값``` 명령어로 서버의 설정을 변경   
-> 코드 문제면 코드를 수정하도록 한다. (_ _) 이상!
+> 쓰레드 생성 코드의 문제면 코드를 수정하도록 한다. ~~(테스트 코드처럼 작성할 개발자는 없겠지만..)~~   
 
 + 추가
 > __위 테스트에서 사용한 ```ulimit -u``` 명령어는 영구적인 설정은 아니다.__   
