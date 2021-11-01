@@ -67,7 +67,7 @@ public class MouseMoveTest {
 ## Max User Processes in Linux
 프로젝트 중 개발서버에서 OutOfMemoryError가 발생하여 정리   
 테스트는 도커로 CentOS 컨테이너를 생성하여 진행하였고 생성한 명령어는 다음과 같다.   
-* 터미널은 Windows Terminal의 PowerShell을 사용하였고 Docker-Desktop이 설치된 상태이다.
+> 터미널은 Windows Terminal의 PowerShell을 사용하였고 Docker-Desktop이 설치된 상태이다.
 ```
 PS C:\Users\KJY> docker run -it --rm centos:latest bash
 Unable to find image 'centos:latest' locally
@@ -122,7 +122,7 @@ virtual memory          (kbytes, -v) unlimited
 file locks                      (-x) unlimited
 ```
 ulimit -a, ulimit -aH 명령어로 max user processes 확인   
-* -a 옵션은 soft 타입의 limit, -aH 옵션은 hard 타입의 limit 출력
+> -a 옵션은 soft 타입의 limit, -aH 옵션은 hard 타입의 limit 출력
 
 ```
 [root@d25ed7467411 security]# ulimit -u 1024
@@ -145,7 +145,7 @@ virtual memory          (kbytes, -v) unlimited
 file locks                      (-x) unlimited
 ```
 테스트를 위하여 max user processes 값을 1024로 변경
-* hard 타입의 제한값은 여전히 unlimited
+> hard 타입의 제한값은 여전히 unlimited
 
 ```
 [root@d25ed7467411 security]# java
@@ -165,9 +165,17 @@ java 명령어가 없으므로 yum으로 java 설치하였고 버전은 1.8
 ```
 나의 정체성을 위해 이니셜 계정도 생성해주고 홈 디렉터리로 이동
 
-```java
+```
 [kjy@d25ed7467411 ~]$ vi ThreadMakerTest.java
-[kjy@d25ed7467411 ~]$ cat ThreadMakerTest.java
+[kjy@d25ed7467411 ~]$ ls
+ThreadMakerTest.java
+[kjy@d25ed7467411 ~]$ javac ThreadMakerTest.java
+[kjy@d25ed7467411 ~]$ ls
+ThreadMakerTest.class  ThreadMakerTest.java
+```
+vi 편집기로 미리 작성한 코드를 복붙하여 java 파일 생성하고 컴파일
+
+```java
 public class ThreadMakerTest {
         public static void main(String[] args) {
                 int threadCount = 0;
@@ -185,21 +193,61 @@ public class ThreadMakerTest {
                                         Thread.currentThread().interrupt();
                                 }
                         }, "Test-Thread-" +name).start();
-
-                        /*new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                        try {
-                                                Thread.sleep(Long.MAX_VALUE);
-                                        } catch (InterruptedException e) {
-                                                e.printStackTrace();
-                                                // Restore interrupted state...
-                                                Thread.currentThread().interrupt();
-                                        }
-                                }
-                        }).start();*/
                 }
         }
-
 }
 ```
+테스트에 사용할 쓰레드 생성 코드   
+
+```
+[kjy@d25ed7467411 ~]$ java ThreadMakerTest
+Count: 1
+Count: 2
+Thread[Test-Thread-1,5,main]
+Count: 3
+Count: 4
+Thread[Test-Thread-2,5,main]
+Thread[Test-Thread-3,5,main]
+Count: 5
+Count: 6
+Thread[Test-Thread-4,5,main]
+Thread[Test-Thread-5,5,main]
+Count: 7
+Thread[Test-Thread-6,5,main]
+Count: 8
+Thread[Test-Thread-7,5,main]
+Count: 9
+Thread[Test-Thread-8,5,main]
+Count: 10
+Thread[Test-Thread-9,5,main]
+Count: 11
+Count: 12
+Thread[Test-Thread-10,5,main]
+Thread[Test-Thread-11,5,main]
+Count: 13
+Thread[Test-Thread-12,5,main]
+...중략...
+Count: 1000
+Thread[Test-Thread-999,5,main]
+Count: 1001
+Thread[Test-Thread-1000,5,main]
+Count: 1002
+Thread[Test-Thread-1001,5,main]
+Count: 1003
+Thread[Test-Thread-1002,5,main]
+Count: 1004
+Thread[Test-Thread-1003,5,main]
+Exception in thread "main" java.lang.OutOfMemoryError: unable to create new native thread
+        at java.lang.Thread.start0(Native Method)
+        at java.lang.Thread.start(Thread.java:717)
+        at ThreadMakerTest.main(ThreadMakerTest.java:17)
+```
+테스트 시작하고 1004번째 쓰레드 생성에서 OutOfMemoryError 발생   
+기존 쓰레드가 20개 정도 서버에 있었음을 가정하면 테스트는 성공!
+```
+```
+^COpenJDK 64-Bit Server VM warning: Exception java.lang.OutOfMemoryError occurred dispatching signal SIGINT to handler- the VM may need to be forcibly terminated
+```
+> 터미널 인터럽트(Ctrl + C)를 해도 프로세스가 취소되지 않음... 안녕, 컨테이너..
+
+
