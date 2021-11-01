@@ -68,8 +68,7 @@ public class MouseMoveTest {
 - - -
 
 ## Max User Processes in Linux
-2021-11-01
-프로젝트 중 개발서버에서 OutOfMemoryError가 발생하여 정리한다.   
+2021-11-01   프로젝트 중 개발서버에서 OutOfMemoryError가 발생하여 정리한다.   
 테스트는 도커로 CentOS 컨테이너를 생성하여 진행하였고 생성한 명령어는 다음과 같다.   
 > 터미널은 Windows Terminal의 PowerShell을 사용하였고 Docker-Desktop이 설치된 상태이다.
 ```
