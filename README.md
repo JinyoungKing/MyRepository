@@ -65,6 +65,21 @@ public class MouseMoveTest {
 이런 것도 된다..! ヾ(•ω•`)o
 
 ## Max User Processes in Linux
+프로젝트 중 개발서버에서 OutOfMemoryError가 발생하여 정리
+테스트는 도커로 CentOS 컨테이너를 생성하여 진행하였고 생성한 명령어는 다음과 같다.
+```
+PS C:\Users\KJY> docker run -it --rm centos:latest bash
+Unable to find image 'centos:latest' locally
+latest: Pulling from library/centos
+a1d0c7532777: Pull complete
+Digest: sha256:a27fd8080b517143cbbbab9dfb7c8571c40d67d534bbdee55bd6c473f432b177
+Status: Downloaded newer image for centos:latest
+[root@d25ed7467411 /]# ls
+bin  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[root@d25ed7467411 /]# cat /etc/redhat-release
+CentOS Linux release 8.4.2105
+```
+
 ```
 [kjy@d25ed7467411 ~]$ ulimit -a
 core file size          (blocks, -c) 0
