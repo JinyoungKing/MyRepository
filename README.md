@@ -124,6 +124,82 @@ file locks                      (-x) unlimited
 ulimit -a, ulimit -aH 명령어로 max user processes 확인   
 * -a 옵션은 soft 타입의 limit, -aH 옵션은 hard 타입의 limit 출력
 
+```
+[root@d25ed7467411 security]# ulimit -u 1024
+[root@d25ed7467411 security]# ulimit -a
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 50169
+max locked memory       (kbytes, -l) 82000
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1048576
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 1024
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+```
+테스트를 위하여 max user processes 값을 1024로 변경
+* hard 타입의 제한값은 여전히 unlimited
 
+```
+[root@d25ed7467411 security]# java
+bash: java: command not found
+[root@d25ed7467411 jre]# yum -y install java-devel
+... install prcoess skip ...
+[root@d25ed7467411 security]# java -version
+openjdk version "1.8.0_312"
+OpenJDK Runtime Environment (build 1.8.0_312-b07)
+OpenJDK 64-Bit Server VM (build 25.312-b07, mixed mode)
+```
+java 명령어가 없으므로 yum으로 java 설치하였고 버전은 1.8   
 
+```
+[root@d25ed7467411 home]# adduser kjy
+[root@d25ed7467411 kjy]# su - kjy
+```
+나의 정체성을 위해 이니셜 계정도 생성해주고 홈 디렉터리로 이동
 
+```java
+[kjy@d25ed7467411 ~]$ vi ThreadMakerTest.java
+[kjy@d25ed7467411 ~]$ cat ThreadMakerTest.java
+public class ThreadMakerTest {
+        public static void main(String[] args) {
+                int threadCount = 0;
+                while (!Thread.interrupted()) {
+                        threadCount++;
+                        System.out.println("Count: " + threadCount);
+                        String name = String.valueOf(threadCount);
+                        new Thread(()->{
+                              System.out.println(Thread.currentThread());
+                              try {
+                                        Thread.sleep(Long.MAX_VALUE);
+                                } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                        // Restore interrupted state...
+                                        Thread.currentThread().interrupt();
+                                }
+                        }, "Test-Thread-" +name).start();
+
+                        /*new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                        try {
+                                                Thread.sleep(Long.MAX_VALUE);
+                                        } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                                // Restore interrupted state...
+                                                Thread.currentThread().interrupt();
+                                        }
+                                }
+                        }).start();*/
+                }
+        }
+
+}
+```
