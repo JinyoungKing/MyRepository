@@ -237,8 +237,11 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 > 터미널 인터럽트(Ctrl + C)를 해도 프로세스가 취소되지 않음... 안녕, 컨테이너.. （；´д｀）ゞ
 
 + 결론
-> ulimit -u 값은 사용자 계정에서 실행되는 쓰레드의 최대 갯수이다.
-> ```Exception in thread "main" java.lang.OutOfMemoryError: unable to create new native thread```가 발생했다면 ulimit -u 값을 확인
-> ulimit -u 설정값 명령어로 서버의 설정을 변경
-> 코드 문제면 코드를 수정하도록... (_ _)
+> ulimit -u 값은 사용자 계정에서 실행되는 쓰레드의 최대 갯수이다.   
+> ```Exception in thread "main" java.lang.OutOfMemoryError: unable to create new native thread```가 발생했다면 ulimit -u 값을 확인   
+> ulimit -u 설정값 명령어로 서버의 설정을 변경   
+> 코드 문제면 코드를 수정하도록... (_ _) 이상!
+- - -
+
+후아~
 
