@@ -239,11 +239,11 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 > 다른 터미널로 컨테이너에 접속하여 ```kill -9 PID``` 명령어를 사용하면 프로세스 종료는 가능   
 > PID는 ```ps -ef | grep ThreadMakerTest``` 명령어 출력값의 2번째 값으로 검색 가능   
 > 예시   
-```
-sh-4.4# ps -ef | grep ThreadMakerTest
-kjy       7942  7924  2 08:41 pts/1    00:00:00 java ThreadMakerTest
-sh-4.4# kill -9 7942
-```
+> ```
+> sh-4.4# ps -ef | grep ThreadMakerTest
+> kjy       7942  7924  2 08:41 pts/1    00:00:00 java ThreadMakerTest
+> sh-4.4# kill -9 7942
+> ```
 
 
 
