@@ -17,7 +17,7 @@ public class ThreadMakerTest {
 					Thread.currentThread().interrupt();
 				}
 			}, "Test-Thread-" +name).start();
-			Thread.sleep(100); // Create thread per 0.1 seconds
+			Thread.sleep(1000); // Create thread per 0.1 seconds
 			
 			/* I will use lambda.
 			 * new Thread(new Runnable() {
