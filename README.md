@@ -229,11 +229,12 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 ```
 테스트 시작하고 1004번째 쓰레드 생성에서 OutOfMemoryError 발생   
 기존 쓰레드가 20개 정도 서버에 있었음을 가정하면 테스트는 성공!
+
 ```
-```
-	^COpenJDK 64-Bit Server VM warning: Exception java.lang.OutOfMemoryError occurred dispatching signal SIGINT to handler- the VM may need to be forcibly terminated
+^COpenJDK 64-Bit Server VM warning: Exception java.lang.OutOfMemoryError occurred dispatching signal SIGINT to handler- the VM may need to be forcibly terminated
 ```
 ㅜ.ㅜ
+
 > 터미널 인터럽트(Ctrl + C)를 해도 프로세스가 취소되지 않음... 안녕, 컨테이너..ㅠㅠ
 
 
