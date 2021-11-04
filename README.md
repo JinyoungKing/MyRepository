@@ -283,6 +283,7 @@ Red Hat Enterprise Linux Server release 7.0 (Maipo)
 > CentOS/RHEL 5,6 -> 90-nproc.conf   
 > CentOS/RHEL 7 -> 20-nproc.conf   
 > 기본적으로 limits.conf 파일에 nproc 설정이 적용되지만 limits.d 디렉터리에 있는 conf 파일에 nproc에 대한 설정이 있을 경우 우선 적용된다.   
+> 링크 참고: https://www.thegeekdiary.com/how-to-set-nproc-hard-and-soft-values-in-centos-rhel-567/   
 > （；´д｀）ゞ 자꾸 나오는 리눅스 서버의 지식...
 - - -
 
