@@ -263,24 +263,27 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 > 의미: 모든 계정( * )에 soft 타입으로 max user processes 제한을 1024로 설정한다.
 > 3. 저장 후 닫기
 > ```
-> + 추가 2 ( 2021-11-03 )   
+
++ 추가 2 ( 2021-11-03 )   
 > 서버가 Red Hat Enterprise Linux(RHEL)일 경우 limits.conf의 nproc(max user processes) 설정이 적용되지 않는 현상이 있었다.   
 > 링크 참고: https://access.redhat.com/solutions/61334   
 > 다음은 링크의 내용을 인용한 것이다.   
 > > Note that the nproc setting can no longer be set in limits.conf. Please use /etc/security/limits.d/90-nproc.conf instead. Setting nproc in /etc/security/limits.conf has no effect in Red Hat Enterprise Linux.   
 > /etc/security/limits.conf 파일에 더 이상 nproc 값을 설정할 수 없으며 대신에 /etc/security/limits.d/90-nproc.conf 파일에 설정하라는 뜻이다.   
 > 나의 경우에는 /etc/security/limits.d/20-nproc.conf 파일이 해당 경로에 존재했다.   
-> ```
-> [kjy@3a1fdfb67a6c limits.d]$ cat /etc/redhat-release
+```
+[kjy@3a1fdfb67a6c limits.d]$ cat /etc/redhat-release
 Red Hat Enterprise Linux Server release 7.0 (Maipo)
 [kjy@3a1fdfb67a6c limits.d]$ pwd
 /etc/security/limits.d
 [kjy@3a1fdfb67a6c limits.d]$ ls
 20-nproc.conf
 [kjy@3a1fdfb67a6c limits.d]$
-> ```
-> 버전마다 파일명이 다른 듯 하지만 7.x 버전은 20-nproc.conf 파일을 사용하는 것 같다.   
-> 
+```
+> CentOS/RHEL 5,6 -> 90-nproc.conf   
+> CentOS/RHEL 7 -> 20-nproc.conf   
+> 기본적으로 limits.conf 파일에 nproc 설정이 적용되지만 limits.d 디렉터리에 있는 conf 파일에 nproc에 대한 설정이 있을 경우 우선 적용된다.   
+> （；´д｀）ゞ 자꾸 나오는 리눅스 서버의 지식...
 - - -
 
 
