@@ -250,7 +250,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 > ```ulimit -u``` 값은 사용자 계정에서 실행되는 쓰레드의 최대 갯수이다.   
 > ```Exception in thread "main" java.lang.OutOfMemoryError: unable to create new native thread```가 발생했다면 ulimit -u 값을 확인   
 > ```ulimit -u 설정값``` 명령어로 서버의 설정을 변경   
-> 쓰레드 생성 코드의 문제면 코드를 수정하도록 한다. ~~(테스트 코드처럼 작성할 개발자는 없겠지만..)~~   
+쓰레드 생성 코드의 문제면 코드를 수정하도록 한다. ~~(테스트 코드처럼 작성할 개발자는 없겠지만..)~~   
 
 + 추가
 > __위 테스트에서 사용한 ```ulimit -u``` 명령어는 영구적인 설정은 아니다.__   
@@ -264,7 +264,8 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 > ```
 
 + 추가 2 ( 2021-11-03 )   
-> ~~서버가 Red Hat Enterprise Linux(RHEL)일 경우 limits.conf의 nproc(max user processes) 설정이 적용되지 않는 현상이 있었다.~~   테스트 결과, 적용은 되나 설정값 적용 우선 순위가 밀림.   
+~~서버가 Red Hat Enterprise Linux(RHEL)일 경우 limits.conf의 nproc(max user processes) 설정이 적용되지 않는 현상이 있었다~~
+> 테스트 결과, 적용은 되나 설정값 적용 우선 순위가 밀림.   
 > 링크 참고: https://access.redhat.com/solutions/61334   
 > 다음은 링크의 내용을 인용한 것이다.   
 > > Note that the nproc setting can no longer be set in limits.conf. Please use /etc/security/limits.d/90-nproc.conf instead. Setting nproc in /etc/security/limits.conf has no effect in Red Hat Enterprise Linux.   
