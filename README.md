@@ -264,7 +264,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 > ```
 
 + 추가 2 ( 2021-11-03 )   
-~~서버가 Red Hat Enterprise Linux(RHEL)일 경우 limits.conf의 nproc(max user processes) 설정이 적용되지 않는 현상이 있었다~~
+> ~~서버가 Red Hat Enterprise Linux(RHEL)일 경우 limits.conf의 nproc(max user processes) 설정이 적용되지 않는 현상이 있었다~~
 > 테스트 결과, 적용은 되나 설정값 적용 우선 순위가 밀림.   
 > 링크 참고: https://access.redhat.com/solutions/61334   
 > 다음은 링크의 내용을 인용한 것이다.   
