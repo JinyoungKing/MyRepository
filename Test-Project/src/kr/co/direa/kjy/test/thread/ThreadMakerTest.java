@@ -7,31 +7,25 @@ public class ThreadMakerTest {
 			threadCount++;
 			System.out.println("Count: " + threadCount);
 			String name = String.valueOf(threadCount);
-			new Thread(()->{
-			      System.out.println(Thread.currentThread());
-			      try {
+			new Thread(() -> {
+				System.out.println(Thread.currentThread());
+				try {
 					Thread.sleep(Long.MAX_VALUE);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 					// Restore interrupted state...
 					Thread.currentThread().interrupt();
 				}
-			}, "Test-Thread-" +name).start();
-			Thread.sleep(1000); // Create thread per 0.1 seconds
-			
-			/* I will use lambda.
-			 * new Thread(new Runnable() {
-				@Override
-				public void run() {
-					try {
-						Thread.sleep(Long.MAX_VALUE);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-						// Restore interrupted state...
-						Thread.currentThread().interrupt();
-					}
-				}
-			}).start();*/
+			}, "Test-Thread-" + name).start();
+			Thread.sleep(100); // Create thread per 0.1 seconds
+
+			/*
+			 * I will use lambda. new Thread(new Runnable() {
+			 * 
+			 * @Override public void run() { try { Thread.sleep(Long.MAX_VALUE); } catch
+			 * (InterruptedException e) { e.printStackTrace(); // Restore interrupted
+			 * state... Thread.currentThread().interrupt(); } } }).start();
+			 */
 		}
 	}
 
