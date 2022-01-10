@@ -8,28 +8,7 @@ My First Repository
 
 - - -
 
-## File Write Performance
-```java
-public class FilesTest {
-	private static final String MYNAME = FilesTest.class.getSimpleName();
 
-	public static void main(String[] args) {
-		long start = System.currentTimeMillis();
-		String str = FileReadTest.getFileContent();
-		byte[] bytes = str.getBytes();
-		Path path = Paths.get("output/" + MYNAME);
-		try {
-			Files.write(path, bytes);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		long finish = System.currentTimeMillis();
-		System.out.println("Running time: " + (finish - start)); // 105
-	}
-
-}
-```
-Java에서 지원하는 파일 쓰기의 성능 테스트 중 Files 라이브러리를 사용한 코드
 - - -
 
 ## MouseMoveTest
