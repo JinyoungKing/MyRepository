@@ -13,7 +13,6 @@ public class FileReadTest {
 	static {
 		File file = new File("resources/eula.1042.txt");
 		readByBufferedReader(file);
-//		System.out.println("Running time: " + (finish - start));
 	}
 
 	public static void readByFileReader(File file) {
