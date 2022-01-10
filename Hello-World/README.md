@@ -1,9 +1,11 @@
 ## HelloWorld
 ```java
-public class HelloWorld {
-	public static void main(String[] args) {
-		System.out.println("HELLO WORLD!");
+public static void main(String[] args) {
+		print();
 	}
-}
+
+	private static void print() {
+		System.out.println("HELLO WORLD!!");
+	}
 ```
-°³¹ßÀÚ¶ó¸é ´©±¸³ª Ã³À½¿¡ ÀÛ¼ºÇÏ´Â ÄÚµå
+ê°œë°œìë¼ë©´ ëˆ„êµ¬ë‚˜ ì²˜ìŒì— ì‘ì„±í•˜ëŠ” ì½”ë“œ
